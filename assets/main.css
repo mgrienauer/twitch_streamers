@@ -1,0 +1,90 @@
+
+/* html and all general styling */
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-attachment: fixed;
+  background-size: auto;
+  background-image: url("https://slate.adobe.com/a/wKryJ/images/69077D17-0426-4B67-9BEF-8903C33153CA.jpg");
+  font-family: 'Comfortaa', 'Roboto', sans-serif;
+  margin: 0px;
+}
+
+a {
+  text-decoration: none !important;
+}
+
+input {
+  border: none;
+}
+
+button {
+  border: none;
+  text-decoration: none;
+}
+
+/* main content container styling */
+
+.wrapper {
+  display: grid;
+  max-width: 1024px;
+  width: 100%;
+  margin: auto;
+  grid-gap: 5px;
+}
+
+/* header styling and header button styling */
+
+.header {
+  display: grid;
+  grid-template-columns: 1fr;
+  color: #212121;
+  background-color: #FBC02D;
+  font-size: 1.5em;
+}
+
+.header-h1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  grid-column: 1 / -1;
+}
+
+.status-btns {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  grid-column: 1 / -1;
+  height: 70px;
+  padding: 5px;
+}
+
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  height: 100%;
+  padding: 5px;
+  font-size: 1em;
+  color: white;
+  border-left: 3px solid #FBC02D;
+  background-color: #9C27B0;
+  transition: background-color 0.3s ease;
+}
+
+.btn-online {
+  border-left: none;
+}
+
+.btn:hover {
+  background-color: #E040FB;
+}
