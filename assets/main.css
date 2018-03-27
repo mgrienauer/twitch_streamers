@@ -93,7 +93,7 @@ button {
   background-color: #E040FB;
 }
 
-.status-btns > .btn:focus {
+.btn-active {
   background-color: #E040FB;
 }
 
