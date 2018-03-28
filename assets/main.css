@@ -11,9 +11,8 @@ html {
 }
 
 body {
-  background-attachment: fixed;
-  background-size: auto;
-  background-image: url("https://slate.adobe.com/a/wKryJ/images/69077D17-0426-4B67-9BEF-8903C33153CA.jpg");
+  background-image: url("twitch_background/Glitch_Purple_RGB.svg");
+  background-color: #7C4DFF;
   font-family: 'Comfortaa', 'Roboto', sans-serif;
   margin: 0px;
 }
@@ -119,6 +118,38 @@ button {
 .search-bar > .btn {
   border-left: none;
 }
+
+/* styling for streamer divs */
+
+.streamer-div{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 100px;
+  background-color: #FBC02D;
+  font-size: 1.5em;
+  padding: 10px;
+}
+
+.fa-twitch {
+  margin: 20px;
+}
+
+.streamer-logo {
+  height: 75px;
+  width: 75px;
+  border-radius: 50%;
+  margin: 20px;
+}
+
+.streamer-followers {
+  margin: 0px 20px 0px auto;
+}
+
+.streamer-name{
+  margin: 20px;
+}
+
 
 /* media query for smaller screens */
 
