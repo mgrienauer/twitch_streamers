@@ -94,11 +94,6 @@ button {
 
 .btn-active {
   background-color: #E040FB;
-  border: none;
-}
-
-.btn:focus {
-  border: none;
 }
 
 /* search bar styling */
