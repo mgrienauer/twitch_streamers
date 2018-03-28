@@ -94,6 +94,11 @@ button {
 
 .btn-active {
   background-color: #E040FB;
+  border: none;
+}
+
+.btn:focus {
+  border: none;
 }
 
 /* search bar styling */
@@ -126,13 +131,28 @@ button {
   justify-content: flex-start;
   align-items: center;
   height: 100px;
-  background-color: #FBC02D;
   font-size: 1.5em;
   padding: 10px;
 }
 
+.streamer-offline {
+  background-color: #ffd672;
+}
+
+.streamer-online {
+  background-color: #FBC02D;
+}
+
 .fa-twitch {
   margin: 20px;
+}
+
+.icon-offline {
+  color: #F44336;
+}
+
+.icon-online {
+  color: #4CAF50;
 }
 
 .streamer-logo {
@@ -144,6 +164,16 @@ button {
 
 .streamer-followers {
   margin: 0px 20px 0px auto;
+}
+
+.stream-viewers {
+  margin: 0px 20px 0px auto;
+  text-align: center;
+}
+
+.stream-status {
+  margin: 20px;
+  font-size: .8em;
 }
 
 .streamer-name{
