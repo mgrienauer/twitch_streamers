@@ -6,6 +6,8 @@ $(document).ready(function(){
 
   //create function that updates streamer's channel info in html
   function ajaxChannelCall(streamer){
+    //make streamer toLowerCase
+    streamer = streamer.toLowerCase();
     //make ajax call to retrieve streamer's channel info
     $.ajax({
      type: 'GET',
@@ -36,6 +38,8 @@ $(document).ready(function(){
 
   //create function that take a streamer username as input and returns json data from twitch api
   function ajaxStreamCall(streamer){
+    //make streamer lower case
+    streamer = streamer.toLowerCase();
     //make ajax call with streamer name to check stream status
     $.ajax({
      type: 'GET',
@@ -96,7 +100,26 @@ $(document).ready(function(){
   streamerArr.forEach(ajaxChannelCall);
   streamerArr.forEach(ajaxStreamCall);
 
+//make a function that takes a streamer id as input and returns a special streamer div
+function searchedStreamerDiv(){
+  let streamer = $('#streamer-search').val().toLowerCase();
+  //check if streamer is already in wrapper
+  if( $('.wrapper').has(`#${streamer}`) ){
+    //hide all streamer divs
+    $('.streamer-div').hide();
+    //show searched streasmer div
+    $(`#${streamer}`).show();
+  } else {
+    ajaxChannelCall(streamer);
+    ajaxStreamCall(streamer);
+  }
 
+}
+
+//add event handler for when search button pressed
+$('.btn-search').click(function(){
+  searchedStreamerDiv();
+});
 
 
 
