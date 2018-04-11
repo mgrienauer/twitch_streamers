@@ -11,7 +11,6 @@ html {
 }
 
 body {
-  background-image: url("twitch_background/Glitch_Purple_RGB.svg");
   background-color: #7C4DFF;
   font-family: 'Comfortaa', 'Roboto', sans-serif;
   margin: 0px;
@@ -192,5 +191,11 @@ button {
     width: 100%;
     font-size: 1em;
   }
+
+  .streamer-div {
+    height: 150px;
+  }
+
+
 
 }

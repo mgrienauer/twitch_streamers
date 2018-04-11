@@ -1,3 +1,4 @@
+
 $(document).ready(function(){
 
   //create array to store list of streamer usernames
@@ -9,11 +10,12 @@ $(document).ready(function(){
     $.ajax({
      type: 'GET',
      url: 'https://api.twitch.tv/kraken/channels/' + streamer,
+     dataType: 'json',
      headers: {
        'Client-ID': 'ieym1jzi0ljgp9ntvvw0dcuxaw4hzf'
      },
      success: function(data) {
-       //console.log(data);
+       console.log(data);
        //create variable to store streamer div
        let streamerDiv = `
         <div class="streamer-div streamer-offline" id=${streamer}>
@@ -38,12 +40,13 @@ $(document).ready(function(){
     $.ajax({
      type: 'GET',
      url: 'https://api.twitch.tv/kraken/streams/' + streamer,
+     dataType: 'json',
      headers: {
        'Client-ID': 'ieym1jzi0ljgp9ntvvw0dcuxaw4hzf'
      },
      // log data to console if success
      success: function(data) {
-       console.log(data);
+       //console.log(data);
        if (data.stream !== null){
          updateStreamData();
        }
@@ -64,6 +67,30 @@ $(document).ready(function(){
      }
     });
   }
+
+  //make event handler for when online button clicked
+  $('.btn-online').click(function(){
+    //show all online players
+    $('.streamer-online').show();
+    //hide all offline palyers
+    $('.streamer-offline').hide();
+  });
+
+  //make event handler for when offline button clicked
+  $('.btn-offline').click(function(){
+    //show all offline players
+    $('.streamer-offline').show();
+    //hide all online palyers
+    $('.streamer-online').hide();
+  });
+
+  //make event handler for when all button is clicked
+  $('.btn-all').click(function(){
+    //show all online players
+    $('.streamer-online').show();
+    //show all offline palyers
+    $('.streamer-offline').show();
+  });
 
   //for each streamer, make an ajax request and create an html div with relevant info
   streamerArr.forEach(ajaxChannelCall);
