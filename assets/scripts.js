@@ -17,7 +17,7 @@ $(document).ready(function(){
        'Client-ID': 'ieym1jzi0ljgp9ntvvw0dcuxaw4hzf'
      },
      success: function(data) {
-       console.log(data);
+       //console.log(data);
        //create variable to store streamer div
        let streamerDiv = `
         <div class="streamer-div streamer-offline" id=${streamer}>
@@ -29,12 +29,11 @@ $(document).ready(function(){
        `;
        //append the streamer's div to html doc
        $('.wrapper').append(streamerDiv);
-     }
+     },
     });
 
-
+    return 1;
   }
-
 
   //create function that take a streamer username as input and returns json data from twitch api
   function ajaxStreamCall(streamer){
@@ -50,7 +49,7 @@ $(document).ready(function(){
      },
      // log data to console if success
      success: function(data) {
-       //console.log(data);
+       console.log(data);
        if (data.stream !== null){
          updateStreamData();
        }
@@ -70,6 +69,24 @@ $(document).ready(function(){
       }
      }
     });
+  }
+
+  //make a function that takes a streamer id as input and returns a special streamer div
+  function searchedStreamerDiv(){
+    let streamer = $('#streamer-search').val().toLowerCase();
+    //check if streamer is already in wrapper
+    if( $(`#${streamer}`).length > 0 ){
+      //hide all streamer divs
+      $('.streamer-div').hide();
+      //show searched streasmer div
+      $(`#${streamer}`).show();
+    } else if (ajaxChannelCall(streamer) == 1){
+      //if no streamer found, change palceholder text
+      $('#streamer-search').attr('placeholder', 'Streamer not found');
+    } else {
+      ajaxChannelCall(streamer);
+      ajaxStreamCall(streamer);
+    }
   }
 
   //make event handler for when online button clicked
@@ -96,32 +113,12 @@ $(document).ready(function(){
     $('.streamer-offline').show();
   });
 
+  //add event handler for when search button pressed
+  $('.btn-search').click(searchedStreamerDiv);
+
   //for each streamer, make an ajax request and create an html div with relevant info
   streamerArr.forEach(ajaxChannelCall);
   streamerArr.forEach(ajaxStreamCall);
-
-//make a function that takes a streamer id as input and returns a special streamer div
-function searchedStreamerDiv(){
-  let streamer = $('#streamer-search').val().toLowerCase();
-  //check if streamer is already in wrapper
-  if( $('.wrapper').has(`#${streamer}`) ){
-    //hide all streamer divs
-    $('.streamer-div').hide();
-    //show searched streasmer div
-    $(`#${streamer}`).show();
-  } else {
-    ajaxChannelCall(streamer);
-    ajaxStreamCall(streamer);
-  }
-
-}
-
-//add event handler for when search button pressed
-$('.btn-search').click(function(){
-  searchedStreamerDiv();
-});
-
-
 
 
 
