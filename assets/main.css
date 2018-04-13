@@ -120,6 +120,11 @@ button {
 
 /* styling for streamer divs */
 
+.streamer-container {
+  display: grid;
+  grid-gap: 5px;
+}
+
 .streamer-div{
   display: flex;
   justify-content: flex-start;
@@ -135,6 +140,10 @@ button {
 
 .streamer-online {
   background-color: #FBC02D;
+}
+
+.searched-streamer {
+  background-color: #E1BEE7 !important;
 }
 
 .fa-twitch {

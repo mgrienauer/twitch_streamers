@@ -28,10 +28,10 @@ $(document).ready(function(){
         </div>
        `;
        //append the streamer's div to html doc
-       $('.wrapper').append(streamerDiv);
+       $('.streamer-container').prepend(streamerDiv);
      },
     });
-
+    //return 1 if no success
     return 1;
   }
 
@@ -69,6 +69,13 @@ $(document).ready(function(){
       }
      }
     });
+
+    //create a function to sort through streamers in DOM to check if Online
+    // if online, prepend to streamer-container
+    function sortStreamers(){
+
+    }
+
   }
 
   //make a function that takes a streamer id as input and returns a special streamer div
@@ -76,9 +83,6 @@ $(document).ready(function(){
     let streamer = $('#streamer-search').val().toLowerCase();
     //check if streamer is already in wrapper
     if( $(`#${streamer}`).length > 0 ){
-      //hide all streamer divs
-      $('.streamer-div').hide();
-      //show searched streasmer div
       $(`#${streamer}`).show();
     } else if (ajaxChannelCall(streamer) == 1){
       //if no streamer found, change palceholder text
@@ -86,6 +90,7 @@ $(document).ready(function(){
     } else {
       ajaxChannelCall(streamer);
       ajaxStreamCall(streamer);
+      $(`#${streamer}`).addClass('searched-streamer');
     }
   }
 
@@ -95,6 +100,9 @@ $(document).ready(function(){
     $('.streamer-online').show();
     //hide all offline palyers
     $('.streamer-offline').hide();
+    //toggle btn-active classes
+    $('.btn-all, .btn-offline').removeClass('btn-active');
+    $('.btn-online').addClass('btn-active');
   });
 
   //make event handler for when offline button clicked
@@ -103,6 +111,9 @@ $(document).ready(function(){
     $('.streamer-offline').show();
     //hide all online palyers
     $('.streamer-online').hide();
+    //toggle btn-active classes
+    $('.btn-all, .btn-online').removeClass('btn-active');
+    $('.btn-offline').addClass('btn-active');
   });
 
   //make event handler for when all button is clicked
@@ -111,6 +122,9 @@ $(document).ready(function(){
     $('.streamer-online').show();
     //show all offline palyers
     $('.streamer-offline').show();
+    //toggle btn-active classes
+    $('.btn-online, .btn-offline').removeClass('btn-active');
+    $('.btn-all').addClass('btn-active');
   });
 
   //add event handler for when search button pressed
