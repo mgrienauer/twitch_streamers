@@ -1,7 +1,7 @@
 $(document).ready(function(){
 
   //create array to store list of streamer usernames
-  let streamerArr = ["ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "T90Official", "theviperaoc", "RobotCaleb", "noobs2ninjas"];
+  let streamerArr = ["cretetion", "freecodecamp", "T90Official", "theviperaoc", "RobotCaleb", "noobs2ninjas","ESL_SC2","OgamingSC2"];
 
   //create function that updates streamer's channel info in html
   function ajaxChannelCall(streamer){
