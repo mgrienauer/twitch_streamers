@@ -21,7 +21,7 @@ $(document).ready(function(){
        //create variable to store streamer div
        let streamerDiv = `
         <div class="streamer-div streamer-offline" id=${streamer}>
-          <i class="fa fa-twitch fa-2x icon-offline" id=${streamer}-icon></i>
+          <i class="fa fa-twitch fa-2x icon-offline icon" id=${streamer}-icon></i>
           <img src=${data.logo} class='streamer-logo'></img>
           <a href=${data.url} target='#blank' class='streamer-name'> <h3>${data.display_name}</h3> </a>
           <h3 class='streamer-followers'> Followers: ${data.followers} <h3>
