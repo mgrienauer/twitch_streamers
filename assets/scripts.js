@@ -79,16 +79,8 @@ $(document).ready(function(){
     //check if streamer is already in wrapper
     if( $(`#${streamer}`).length ){
       $(`#${streamer}`).show();
-<<<<<<< HEAD
-    } else if (ajaxChannelCall(streamer) == 1){
-      //if no streamer found, change palceholder text
-
-      $('#streamer-search').attr('placeholder', 'Streamer not found');
-    } else {
-=======
     // if streamer div doesnt exist, call channel call function on streamer
     } else{
->>>>>>> b57fd4802e4e6688d32689a481f56a86c6cacd56
       ajaxChannelCall(streamer);
       ajaxStreamCall(streamer);
     }
