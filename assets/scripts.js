@@ -86,6 +86,7 @@ $(document).ready(function(){
       $(`#${streamer}`).show();
     } else if (ajaxChannelCall(streamer) == 1){
       //if no streamer found, change palceholder text
+
       $('#streamer-search').attr('placeholder', 'Streamer not found');
     } else {
       ajaxChannelCall(streamer);
