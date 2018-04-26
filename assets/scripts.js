@@ -135,7 +135,7 @@ $(document).ready(function(){
   //event handler to make search on hitting enter
   $("#streamer-search").keyup(function(event) {
     if (event.keyCode === 13) {
-        $("#search-btn").click();
+      searchedStreamerDiv();
     }
   });
 
