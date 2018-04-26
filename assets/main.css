@@ -192,7 +192,6 @@ button {
 
   .header{
     font-size: 1em;
-    height: 30vh;
   }
 
   .search-bar > input {
@@ -209,7 +208,7 @@ button {
   }
 
   .streamer-div {
-    
+
     flex-wrap: wrap;
     justify-content: center;
   }
