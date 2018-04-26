@@ -120,7 +120,10 @@ $(document).ready(function(){
   });
 
   //add event handler for when search button pressed
-  $('.btn-search').click(searchedStreamerDiv);
+  $('.btn-search').click(function(){
+    searchedStreamerDiv();
+    $('#streamer-search').blur();
+  });
 
   //clear search box val on page load
   $('#streamer-search').val('');
