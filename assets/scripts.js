@@ -1,8 +1,7 @@
-
 $(document).ready(function(){
 
   //create array to store list of streamer usernames
-  let streamerArr = ["ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "T90Official", "theviperaoc", "RobotCaleb", "noobs2ninjas"];
+  let streamerArr = ["cretetion", "freecodecamp", "T90Official", "theviperaoc", "RobotCaleb", "noobs2ninjas","ESL_SC2","OgamingSC2"];
 
   //create function that updates streamer's channel info in html
   function ajaxChannelCall(streamer){
@@ -17,7 +16,8 @@ $(document).ready(function(){
        'Client-ID': 'ieym1jzi0ljgp9ntvvw0dcuxaw4hzf'
      },
      success: function(data) {
-       //console.log(data);
+       console.log(data);
+       streamerFound = true;
        //create variable to store streamer div
        let streamerDiv = `
         <div class="streamer-div streamer-offline" id=${streamer}>
@@ -30,9 +30,10 @@ $(document).ready(function(){
        //append the streamer's div to html doc
        $('.streamer-container').prepend(streamerDiv);
      },
+     error: function(){
+       $('#streamer-search').val(`${streamer} not found!`).css('color', '#F44336');
+     }
     });
-    //return 1 if no success
-    return 1;
   }
 
   //create function that take a streamer username as input and returns json data from twitch api
@@ -47,9 +48,8 @@ $(document).ready(function(){
      headers: {
        'Client-ID': 'ieym1jzi0ljgp9ntvvw0dcuxaw4hzf'
      },
-     // log data to console if success
      success: function(data) {
-       console.log(data);
+       //console.log(data);
        if (data.stream !== null){
          updateStreamData();
        }
@@ -70,28 +70,27 @@ $(document).ready(function(){
      }
     });
 
-    //create a function to sort through streamers in DOM to check if Online
-    // if online, prepend to streamer-container
-    function sortStreamers(){
-
-    }
-
   }
 
   //make a function that takes a streamer id as input and returns a special streamer div
   function searchedStreamerDiv(){
+    //make streamer var lowercase
     let streamer = $('#streamer-search').val().toLowerCase();
     //check if streamer is already in wrapper
-    if( $(`#${streamer}`).length > 0 ){
+    if( $(`#${streamer}`).length ){
       $(`#${streamer}`).show();
+<<<<<<< HEAD
     } else if (ajaxChannelCall(streamer) == 1){
       //if no streamer found, change palceholder text
 
       $('#streamer-search').attr('placeholder', 'Streamer not found');
     } else {
+=======
+    // if streamer div doesnt exist, call channel call function on streamer
+    } else{
+>>>>>>> b57fd4802e4e6688d32689a481f56a86c6cacd56
       ajaxChannelCall(streamer);
       ajaxStreamCall(streamer);
-      $(`#${streamer}`).addClass('searched-streamer');
     }
   }
 
@@ -129,7 +128,24 @@ $(document).ready(function(){
   });
 
   //add event handler for when search button pressed
-  $('.btn-search').click(searchedStreamerDiv);
+  $('.btn-search').click(function(){
+    searchedStreamerDiv();
+    $('#streamer-search').blur();
+  });
+
+  //clear search box val on page load
+  $('#streamer-search').val('');
+  //clear search box on click and change color to black
+  $('#streamer-search').click(function(){
+    $('#streamer-search').val('');
+    $('#streamer-search').css('color', 'black');
+  });
+  //event handler to make search on hitting enter
+  $("#streamer-search").keyup(function(event) {
+    if (event.keyCode === 13) {
+        $("#search-btn").click();
+    }
+  });
 
   //for each streamer, make an ajax request and create an html div with relevant info
   streamerArr.forEach(ajaxChannelCall);
