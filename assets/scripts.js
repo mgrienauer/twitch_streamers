@@ -63,7 +63,7 @@ $(document).ready(function(){
         $(`#${streamer} .streamer-followers`).remove();
         //append stream status and current viewers
         $('#'+streamer).append(`<p class='stream-status'>${streamStatus}</p>`);
-        $('#'+streamer).append(`<h3 class='stream-viewers'>Viewers:<br/>${streamViewers}`);
+        $('#'+streamer).append(`<h3 class='stream-viewers'>Viewers: ${streamViewers}`);
         $(`#${streamer}`).toggleClass('streamer-offline streamer-online');
         $(`#${streamer}-icon`).toggleClass('icon-offline icon-online');
       }
