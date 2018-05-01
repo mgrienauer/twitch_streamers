@@ -12,6 +12,7 @@ html {
 
 body {
   background-color: #7C4DFF;
+  background-image: url(background.svg);
   font-family: 'Comfortaa', 'Roboto', sans-serif;
   margin: 0px;
 }
@@ -50,6 +51,7 @@ button {
   background-color: #FBC02D;
   font-size: 1.5em;
   padding: 5px;
+  opacity: .95;
 }
 
 .header-h1 {
@@ -131,6 +133,7 @@ button {
   align-items: center;
   font-size: 1.5em;
   padding: 10px;
+  opacity: .95;
 }
 
 .streamer-offline {
